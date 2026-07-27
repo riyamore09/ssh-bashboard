@@ -3,7 +3,7 @@
 > A Security Operations Center (SOC) project for monitoring SSH authentication events, detecting brute-force attacks, and investigating suspicious login activity using Splunk Enterprise.
 
 <p align="center">
-  <img src="screenshots/dashboard.png" alt="SSH Dashboard" width="100%">
+  <img src="C:\Users\riyag\Downloads\SSH Dashboard.png" alt="SSH Dashboard" width="100%">
 </p>
 
 ---
