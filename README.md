@@ -1,61 +1,184 @@
-SSH Log Analysis using Splunk
+# 🛡️ SSH Log Analysis using Splunk
 
-Monitor and investigate SSH authentication events using Splunk Enterprise. This project demonstrates how a Security Operations Center (SOC) analyst can detect brute-force attacks, monitor login activity, identify suspicious usernames, and visualize attack sources geographically.
+> A Security Operations Center (SOC) project for monitoring SSH authentication events, detecting brute-force attacks, and investigating suspicious login activity using Splunk Enterprise.
 
-Features
-Total SSH Events
-Successful Login Count
-Failed Login Count
-Connection Without Authentication
-Failed Logins by Username
-Possible Brute Force Attack Detection
-Geographic Attack Map
-Interactive Dashboard
-Technologies
-Splunk Enterprise
-SPL (Search Processing Language)
-Linux SSH Logs
-GeoIP Lookup
-JSON Log Ingestion
+<p align="center">
+  <img src="screenshots/dashboard.png" alt="SSH Dashboard" width="100%">
+</p>
 
-Example:
+---
 
-Sample SPL Queries
-Failed Logins
+## 📌 Project Overview
+
+This project demonstrates how **Splunk Enterprise** can be used to analyze Linux SSH authentication logs in a SOC environment. The dashboard provides real-time visibility into login activities, highlights suspicious authentication attempts, identifies potential brute-force attacks, and visualizes attack sources geographically.
+
+---
+
+## 🚀 Dashboard Features
+
+✅ Total SSH Events
+
+✅ Successful Login Monitoring
+
+✅ Failed Login Monitoring
+
+✅ Connection Without Authentication Detection
+
+✅ Failed Logins by Username
+
+✅ Brute Force Attack Detection
+
+✅ Attack Source IP Analysis
+
+✅ Geographic Attack Visualization
+
+✅ Interactive Splunk Dashboard
+
+---
+
+## 🖼️ Dashboard Preview
+
+### Main Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Splunk Enterprise | SIEM Platform |
+| SPL | Search Processing Language |
+| Linux SSH Logs | Log Source |
+| GeoIP Lookup | Attack Geolocation |
+| JSON | Log Format |
+
+---
+
+## 📂 Repository Structure
+
+```text
+SSH-Log-Analysis-Splunk
+│
+├── dashboards/
+│   └── ssh_dashboard.xml
+│
+├── sample_logs/
+│   └── ssh_log.json
+│
+├── screenshots/
+│   └── dashboard.png
+│
+├── spl_queries/
+│   ├── brute_force_detection.spl
+│   ├── failed_logins.spl
+│   ├── successful_logins.spl
+│   └── geolocation.spl
+│
+└── README.md
+```
+
+---
+
+# 🔍 Sample SPL Queries
+
+## Failed Login Attempts
+
+```spl
 index=ssh auth_success=false
 | stats count by username
 | sort -count
-Successful Logins
+```
+
+---
+
+## Successful Logins
+
+```spl
 index=ssh auth_success=true
 | stats count
-Possible Brute Force
+```
+
+---
+
+## Possible Brute Force Detection
+
+```spl
 index=ssh auth_success=false
 | stats count by id.orig_h
-| where count>5
+| where count > 5
 | sort -count
-Geo-location
+```
+
+---
+
+## Geographic Attack Map
+
+```spl
 index=ssh auth_success=false
 | iplocation id.orig_h
 | geostats count by Country
-Dashboard Preview
+```
 
-Add the screenshot you shared:
+---
 
+# 📊 Dashboard Metrics
 
-Dataset
-sample_logs/ssh_log.json
-Skills Demonstrated
-Log Analysis
-SIEM Monitoring
-SPL Query Writing
-SSH Security Monitoring
-Brute Force Detection
-Threat Hunting
-Dashboard Development
-Incident Investigation
-Future Improvements
-Email Alerts
-Risk Scoring
-MITRE ATT&CK Mapping
-Correlation Searches
-Splunk Enterprise Security Integration
+| Metric | Description |
+|---------|-------------|
+| Total Events | Total SSH events ingested |
+| Successful Logins | Authenticated users |
+| Failed Logins | Invalid authentication attempts |
+| Unauthenticated Connections | SSH connections without login |
+| Top Targeted Users | Most attacked usernames |
+| Brute Force Sources | IPs exceeding login threshold |
+| Geo Map | Countries generating attacks |
+
+---
+
+# 🎯 Skills Demonstrated
+
+- SIEM Monitoring
+- Splunk Dashboard Development
+- SPL Query Writing
+- SSH Log Analysis
+- Linux Log Investigation
+- Threat Hunting
+- Brute Force Detection
+- Security Monitoring
+- Incident Investigation
+- Log Visualization
+
+---
+
+# 📈 Future Enhancements
+
+- Real-time Email Alerts
+- Risk-Based Alerting
+- MITRE ATT&CK Mapping
+- Splunk Enterprise Security Integration
+- Threat Intelligence Enrichment
+- Automated Incident Response
+- Detection Rules
+- Correlation Searches
+
+---
+
+# 📚 Learning Outcomes
+
+✔ Linux Authentication Log Analysis
+
+✔ SIEM Dashboard Development
+
+✔ SPL Query Optimization
+
+✔ Brute Force Detection
+
+✔ Threat Investigation
+
+✔ SOC Monitoring Workflow
+
+---
+
+## ⭐ If you found this project useful, consider giving it a star!
