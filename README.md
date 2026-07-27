@@ -32,14 +32,6 @@ This project demonstrates how **Splunk Enterprise** can be used to analyze Linux
 
 ---
 
-## 🖼️ Dashboard Preview
-
-### Main Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
----
-
 ## 🛠️ Technology Stack
 
 | Technology | Purpose |
